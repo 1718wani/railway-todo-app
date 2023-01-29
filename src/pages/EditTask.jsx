@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from "react";
-import { Header } from "../components/Header";
-import axios from "axios";
-import { useCookies } from "react-cookie";
-import { url } from "../const";
-import { useNavigate, useParams } from "react-router-dom";
-import "./editTask.css";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useCookies } from 'react-cookie';
+import { useNavigate, useParams } from 'react-router-dom';
+import { url } from '../const';
+import { Header } from '../components/Header';
+import './editTask.css';
 
-export const EditTask = () => {
+export function EditTask() {
   const navigate = useNavigate();
   const { listId, taskId } = useParams();
   const [cookies] = useCookies();
-  const [title, setTitle] = useState("");
-  const [detail, setDetail] = useState("");
+  const [title, setTitle] = useState('');
+  const [detail, setDetail] = useState('');
   const [isDone, setIsDone] = useState();
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleDetailChange = (e) => setDetail(e.target.value);
-  const handleIsDoneChange = (e) => setIsDone(e.target.value === "done");
+  const handleIsDoneChange = (e) => setIsDone(e.target.value === 'done');
   const onUpdateTask = () => {
     console.log(isDone);
     const data = {
-      title: title,
-      detail: detail,
+      title,
+      detail,
       done: isDone,
     };
 
@@ -33,7 +33,7 @@ export const EditTask = () => {
       })
       .then((res) => {
         console.log(res.data);
-        navigate("/");
+        navigate('/');
       })
       .catch((err) => {
         setErrorMessage(`更新に失敗しました。${err}`);
@@ -48,7 +48,7 @@ export const EditTask = () => {
         },
       })
       .then(() => {
-        navigate("/");
+        navigate('/');
       })
       .catch((err) => {
         setErrorMessage(`削除に失敗しました。${err}`);
@@ -105,7 +105,7 @@ export const EditTask = () => {
               name="status"
               value="todo"
               onChange={handleIsDoneChange}
-              checked={isDone === false ? "checked" : ""}
+              checked={isDone === false ? 'checked' : ''}
             />
             未完了
             <input
@@ -114,7 +114,7 @@ export const EditTask = () => {
               name="status"
               value="done"
               onChange={handleIsDoneChange}
-              checked={isDone === true ? "checked" : ""}
+              checked={isDone === true ? 'checked' : ''}
             />
             完了
           </div>
@@ -136,4 +136,4 @@ export const EditTask = () => {
       </main>
     </div>
   );
-};
+}

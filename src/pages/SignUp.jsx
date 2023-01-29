@@ -1,19 +1,19 @@
-import axios from "axios";
-import React, { useState } from "react";
-import { useCookies } from "react-cookie";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate, Navigate } from "react-router-dom";
-import { signIn } from "../authSlice";
-import { Header } from "../components/Header";
-import { url } from "../const";
-import "./signUp.css";
+import axios from 'axios';
+import React, { useState } from 'react';
+import { useCookies } from 'react-cookie';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate, Navigate } from 'react-router-dom';
+import { signIn } from '../authSlice';
+import { Header } from '../components/Header';
+import { url } from '../const';
+import './signUp.css';
 
-export const SignUp = () => {
+export function SignUp() {
   const auth = useSelector((state) => state.auth.isSignIn);
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessge] = useState();
   const [cookies, setCookie, removeCookie] = useCookies();
   const navigate = useNavigate();
@@ -22,18 +22,18 @@ export const SignUp = () => {
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const onSignUp = () => {
     const data = {
-      email: email,
-      name: name,
-      password: password,
+      email,
+      name,
+      password,
     };
 
     axios
       .post(`${url}/users`, data)
       .then((res) => {
-        const token = res.data.token;
+        const { token } = res.data;
         dispatch(signIn());
-        setCookie("token", token);
-        navigate("/");
+        setCookie('token', token);
+        navigate('/');
       })
       .catch((err) => {
         setErrorMessge(`サインアップに失敗しました。 ${err}`);
@@ -79,4 +79,4 @@ export const SignUp = () => {
       </main>
     </div>
   );
-};
+}

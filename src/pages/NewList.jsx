@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import { useCookies } from "react-cookie";
-import axios from "axios";
-import { Header } from "../components/Header";
-import { useNavigate } from "react-router-dom";
-import { url } from "../const";
-import "./newList.css";
+import React, { useState } from 'react';
+import { useCookies } from 'react-cookie';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { Header } from '../components/Header';
+import { url } from '../const';
+import './newList.css';
 
-export const NewList = () => {
+export function NewList() {
   const [cookies] = useCookies();
   const navigate = useNavigate();
-  const [title, setTitle] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [title, setTitle] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const handleTitleChange = (e) => setTitle(e.target.value);
   const onCreateList = () => {
     const data = {
-      title: title,
+      title,
     };
 
     axios
@@ -24,7 +24,7 @@ export const NewList = () => {
         },
       })
       .then(() => {
-        navigate("/");
+        navigate('/');
       })
       .catch((err) => {
         setErrorMessage(`リストの作成に失敗しました。${err}`);
@@ -57,4 +57,4 @@ export const NewList = () => {
       </main>
     </div>
   );
-};
+}
