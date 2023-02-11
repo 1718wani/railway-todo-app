@@ -6,7 +6,7 @@ import { useNavigate, Navigate } from "react-router-dom";
 import { signIn } from "../authSlice";
 import { Header } from "../components/Header";
 import { url } from "../const";
-import "./signUp.scss";
+import "./signUp.module.scss";
 
 export function SignUp() {
   const auth = useSelector((state) => state.auth.isSignIn);

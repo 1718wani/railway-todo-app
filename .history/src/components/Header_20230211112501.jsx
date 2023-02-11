@@ -3,7 +3,7 @@ import { useCookies } from "react-cookie";
 import { useSelector, useDispatch } from "react-redux/es/exports";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "../authSlice";
-import "./header.scss";
+import "./header.module.scss";
 
 export function Header() {
   const auth = useSelector((state) => state.auth.isSignIn);
@@ -20,7 +20,7 @@ export function Header() {
     <header className="header">
       <h1>Todoアプリ</h1>
       {auth ? (
-        <button onClick={handleSignOut} className="sign-out-button">
+        <button onClick={handleSignOut} className="classessign-out-button">
           サインアウト
         </button>
       ) : (

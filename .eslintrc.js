@@ -1,4 +1,5 @@
 module.exports = {
+  root: true ,
   env: {
     browser: true,
     es2021: true,
@@ -6,7 +7,11 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'airbnb',
-    'prettier'
+    'prettier',
+    "react-app",
+    "react-app/jest",
+    "plugin:import/errors",
+    "plugin:import/warnings",
   ],
   overrides: [
   ],
@@ -20,6 +25,8 @@ module.exports = {
   rules: {
     'no-params-reassign':0,
     'import/prefer-default-export': 'off' || 'warn' || 'error',
-    'react/prop-types': 'off'
+    'react/prop-types': 'off',
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+
   },
 };

@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import { useNavigate, useParams } from "react-router-dom";
 import { url } from "../const";
 import { Header } from "../components/Header";
-import "./editTask.scss";
+import "./editTask.module.scss";
 
 export function EditTask() {
   const navigate = useNavigate();
