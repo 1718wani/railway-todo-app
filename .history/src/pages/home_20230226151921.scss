@@ -33,8 +33,8 @@
 }
 
 .active {
-  background-color: variables.$maincolor;
-  color: variables.$white;
+  background-color: $maincolor;
+  color: $white;
 }
 
 .tasks {
@@ -65,7 +65,7 @@
 }
 
 .error-message {
-  color: variables.$negativecolor;
+  color: $negativecolor;
 }
 
 .display-select-wrapper {

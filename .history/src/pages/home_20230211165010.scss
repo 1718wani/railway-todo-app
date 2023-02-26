@@ -1,4 +1,4 @@
-@use "src/style/_variables.scss" as variables;
+@use 'src/style/variable'
 
 .taskList {
   margin: 50px auto;
@@ -27,14 +27,14 @@
   padding: 0 25px;
   text-overflow: normal;
   margin-right: 5px;
-  border: solid 1px variables.$maincolor;
+  border: solid 1px #242F9B;
   justify-content: center;
   align-items: center;
 }
 
 .active {
-  background-color: variables.$maincolor;
-  color: variables.$white;
+  background-color: #242F9B;
+  color: #ffffff;
 }
 
 .tasks {
@@ -65,7 +65,7 @@
 }
 
 .error-message {
-  color: variables.$negativecolor;
+  color:;
 }
 
 .display-select-wrapper {
