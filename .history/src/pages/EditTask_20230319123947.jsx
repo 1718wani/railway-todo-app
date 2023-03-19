@@ -25,7 +25,7 @@ export function EditTask() {
     
   const onUpdateTask = () => {
     console.log(isDone);
-    // 解釈される value は常に yyyy-mm-dd の書式です。
+    console.log(limit);
     const isoLimit = limit + "T00:00:00Z";
     console.log(isoLimit);
     const data = {

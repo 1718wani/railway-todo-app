@@ -14,25 +14,20 @@ export function EditTask() {
   const [detail, setDetail] = useState("");
   const [isDone, setIsDone] = useState();
   // 締め切りの状態を宣言
-  const [limit, setLimit] = useState("");
+  const [limit, setLimit] = useState();
   // 残り時間の状態を宣言
   const [timeLeft, setTimeleft] = useState();
   const [errorMessage, setErrorMessage] = useState("");
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleDetailChange = (e) => setDetail(e.target.value);
   const handleIsDoneChange = (e) => setIsDone(e.target.value === "done");
-  const handleLimitChange = (e) => setLimit(e.target.value)
-    
   const onUpdateTask = () => {
     console.log(isDone);
-    // 解釈される value は常に yyyy-mm-dd の書式です。
-    const isoLimit = limit + "T00:00:00Z";
-    console.log(isoLimit);
     const data = {
       title,
       detail,
       done: isDone,
-      limit: isoLimit,
+      limit
     };
 
     axios
@@ -109,12 +104,10 @@ export function EditTask() {
           />
           <br />
           <label>締め切り日</label>
-          <input
-            type="date"
-            onChange={handleLimitChange}
-            className="edit-task-limit"
-            value={limit}
-          />
+          <input 
+            type="time"
+            
+             ></input>
           <div>
             <input
               type="radio"
