@@ -111,8 +111,7 @@ export function Home() {
               // リストを順番に見ていって、ListIDがセレクトIDになっているところがセレクト箇所
               const isActive = list.id === selectListId;
               return (
-                <li
-                  role="presentation"
+                <li role="presentation"
                   key={key}
                   tabIndex={isActive ? "-1" : "0"}
                   className={`list-tab-item ${isActive ? "active" : ""}`}

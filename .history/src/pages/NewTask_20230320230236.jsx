@@ -11,16 +11,13 @@ export function NewTask() {
   const [lists, setLists] = useState([]);
   const [title, setTitle] = useState("");
   const [detail, setDetail] = useState("");
-  const [limit, setLimit] = useState(new Date().toISOString().slice(0, -14));
+  const [limit, setLimit] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [cookies] = useCookies();
   const navigate = useNavigate();
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleDetailChange = (e) => setDetail(e.target.value);
   const handleSelectList = (id) => setSelectListId(id);
-  const handleLimitChange = (e) => {
-    setLimit(e.target.value);
-  }
   const onCreateTask = () => {
 
     const isoLimit = limit + "T00:00:00Z";
@@ -55,6 +52,7 @@ export function NewTask() {
       .then((res) => {
         setLists(res.data);
         setSelectListId(res.data[0]?.id);
+        
       })
       .catch((err) => {
         setErrorMessage(`リストの取得に失敗しました。${err}`);
@@ -95,15 +93,6 @@ export function NewTask() {
             type="text"
             onChange={handleDetailChange}
             className="new-task-detail"
-          />
-          <br />
-          <label>締め切り日</label>
-          <br />
-          <input
-            type="date"
-            onChange={handleLimitChange}
-            className="edit-task-limit"
-            value={limit}
           />
           <br />
           <button

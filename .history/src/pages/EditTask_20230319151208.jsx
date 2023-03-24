@@ -75,7 +75,7 @@ export function EditTask() {
         setTitle(task.title);
         setDetail(task.detail);
         setIsDone(task.done);
-        setLimit(task.limit.slice(0,-10))
+        setLimit()
       })
       .catch((err) => {
         setErrorMessage(`タスク情報の取得に失敗しました。${err}`);

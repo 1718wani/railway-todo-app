@@ -11,16 +11,15 @@ export function NewTask() {
   const [lists, setLists] = useState([]);
   const [title, setTitle] = useState("");
   const [detail, setDetail] = useState("");
-  const [limit, setLimit] = useState(new Date().toISOString().slice(0, -14));
+  const [limit, setLimit] = useState("");
+  const [date, setDate] = useState(new Date().toISOString().slice(0, -10)); // 今日の日付を取得して、ISO形式の日付文字列に変換し、substrで"yyyy-mm-dd"形式に変換する
   const [errorMessage, setErrorMessage] = useState("");
   const [cookies] = useCookies();
   const navigate = useNavigate();
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleDetailChange = (e) => setDetail(e.target.value);
   const handleSelectList = (id) => setSelectListId(id);
-  const handleLimitChange = (e) => {
-    setLimit(e.target.value);
-  }
+  const handleLimitChange = (e) => setLimit(e.target.value);
   const onCreateTask = () => {
 
     const isoLimit = limit + "T00:00:00Z";
@@ -101,9 +100,9 @@ export function NewTask() {
           <br />
           <input
             type="date"
+            value={date{}
             onChange={handleLimitChange}
             className="edit-task-limit"
-            value={limit}
           />
           <br />
           <button

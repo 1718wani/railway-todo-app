@@ -14,6 +14,7 @@ export function Home() {
   const [errorMessage, setErrorMessage] = useState("");
   const [cookies] = useCookies();
   const handleIsDoneDisplayChange = (e) => setIsDoneDisplay(e.target.value);
+  const 
 
   // 初回レンダリング時のみリストをGetしてlistsにIDとタイトルの入ったオブジェクトのリストである状態を格納している。
   // [
@@ -74,19 +75,6 @@ export function Home() {
         setErrorMessage(`タスクの取得に失敗しました。${err}`);
       });
   };
-
-  const handleKeyDown = (event, listId) => {
-    switch (event.key) {
-      case "Enter":
-        console.log("エンター押されました！");
-        event.preventDefault();
-        handleSelectList(listId);
-        break;
-      default:
-        break;
-    }
-  };
-
   return (
     <div>
       <Header />
@@ -106,18 +94,15 @@ export function Home() {
               </p>
             </div>
           </div>
-          <ul role="tablist" className="list-tab">
+          <ul className="list-tab">
             {lists.map((list, key) => {
               // リストを順番に見ていって、ListIDがセレクトIDになっているところがセレクト箇所
               const isActive = list.id === selectListId;
               return (
                 <li
-                  role="presentation"
                   key={key}
-                  tabIndex={isActive ? "-1" : "0"}
                   className={`list-tab-item ${isActive ? "active" : ""}`}
                   onClick={() => handleSelectList(list.id)}
-                  onKeyDown={(event) => handleKeyDown(event, list.id)}
                 >
                   {list.title}
                 </li>
@@ -153,30 +138,6 @@ export function Home() {
 // 表示するタスク
 function Tasks(props) {
   const { tasks, selectListId, isDoneDisplay } = props;
-
-  // 表示形式を変える関数
-  const convertDateForDisplay = (dataStr) => {
-    const a = dataStr.slice(0, -10);
-    return a;
-  };
-
-  // 残り時間を分単位で計算する関数
-  const calculateTimeLeft = (limitTime) => {
-    // Convert the time string to a Date object
-    const time = new Date(limitTime);
-
-    // Calculate the time difference in seconds
-    const diffInSeconds = Math.floor((time.getTime() - Date.now()) / 1000);
-
-    // Calculate the time difference in days, hours, and minutes
-    const days = Math.floor(diffInSeconds / (24 * 60 * 60));
-    const hours = Math.floor((diffInSeconds % (24 * 60 * 60)) / (60 * 60));
-    const minutes = Math.floor((diffInSeconds % (60 * 60)) / 60);
-
-    // Format the time difference string
-    const diffStr = `${days}日 ${hours}時間 ${minutes}分`;
-    return diffStr;
-  };
 
   if (tasks === null) return <></>;
   // ここにElseの分岐がないのはなぜか
@@ -214,10 +175,8 @@ function Tasks(props) {
               {task.title}
               <br />
               {task.done ? "完了" : "未完了"}
-              締め切り
-              {undefined ? "" : convertDateForDisplay(task.limit)}
-              残り
-              {calculateTimeLeft(task.limit)}
+              <br />
+              {task.limit}
             </Link>
           </li>
         ))}

@@ -74,19 +74,6 @@ export function Home() {
         setErrorMessage(`タスクの取得に失敗しました。${err}`);
       });
   };
-
-  const handleKeyDown = (event, listId) => {
-    switch (event.key) {
-      case "Enter":
-        console.log("エンター押されました！");
-        event.preventDefault();
-        handleSelectList(listId);
-        break;
-      default:
-        break;
-    }
-  };
-
   return (
     <div>
       <Header />
@@ -106,18 +93,15 @@ export function Home() {
               </p>
             </div>
           </div>
-          <ul role="tablist" className="list-tab">
+          <ul className="list-tab">
             {lists.map((list, key) => {
               // リストを順番に見ていって、ListIDがセレクトIDになっているところがセレクト箇所
               const isActive = list.id === selectListId;
               return (
                 <li
-                  role="presentation"
                   key={key}
-                  tabIndex={isActive ? "-1" : "0"}
                   className={`list-tab-item ${isActive ? "active" : ""}`}
                   onClick={() => handleSelectList(list.id)}
-                  onKeyDown={(event) => handleKeyDown(event, list.id)}
                 >
                   {list.title}
                 </li>
@@ -153,15 +137,17 @@ export function Home() {
 // 表示するタスク
 function Tasks(props) {
   const { tasks, selectListId, isDoneDisplay } = props;
+  const { timeLeft, setTimeLeft } = useState();
 
-  // 表示形式を変える関数
+  // 表示形式を変える
   const convertDateForDisplay = (dataStr) => {
     const a = dataStr.slice(0, -10);
     return a;
   };
 
-  // 残り時間を分単位で計算する関数
+  // 残り時間を分単位で計算する。
   const calculateTimeLeft = (limitTime) => {
+
     // Convert the time string to a Date object
     const time = new Date(limitTime);
 
@@ -174,8 +160,8 @@ function Tasks(props) {
     const minutes = Math.floor((diffInSeconds % (60 * 60)) / 60);
 
     // Format the time difference string
-    const diffStr = `${days}日 ${hours}時間 ${minutes}分`;
-    return diffStr;
+    const diffStr = `${days}-day ${hours}-hour ${minutes}-minute`;
+    return diffStr
   };
 
   if (tasks === null) return <></>;
@@ -214,10 +200,9 @@ function Tasks(props) {
               {task.title}
               <br />
               {task.done ? "完了" : "未完了"}
+              <br />
               締め切り
-              {undefined ? "" : convertDateForDisplay(task.limit)}
-              残り
-              {calculateTimeLeft(task.limit)}
+              {convertDateForDisplay(task.limit)}
             </Link>
           </li>
         ))}

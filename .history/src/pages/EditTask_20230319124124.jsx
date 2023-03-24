@@ -19,8 +19,8 @@ export function EditTask() {
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleDetailChange = (e) => setDetail(e.target.value);
   const handleIsDoneChange = (e) => setIsDone(e.target.value === "done");
-  const handleLimitChange = (e) => setLimit(e.target.value);
-
+  const handleLimitChange = (e) => setLimit(e.target.value)
+    
   const onUpdateTask = () => {
     console.log(isDone);
     // 解釈される value は常に yyyy-mm-dd の書式です。
@@ -75,7 +75,6 @@ export function EditTask() {
         setTitle(task.title);
         setDetail(task.detail);
         setIsDone(task.done);
-        setLimit(task.limit.slice(0,-10))
       })
       .catch((err) => {
         setErrorMessage(`タスク情報の取得に失敗しました。${err}`);

@@ -12,6 +12,7 @@ export function NewTask() {
   const [title, setTitle] = useState("");
   const [detail, setDetail] = useState("");
   const [limit, setLimit] = useState(new Date().toISOString().slice(0, -14));
+  
   const [errorMessage, setErrorMessage] = useState("");
   const [cookies] = useCookies();
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ export function NewTask() {
   const handleSelectList = (id) => setSelectListId(id);
   const handleLimitChange = (e) => {
     setLimit(e.target.value);
+    // setDate(e.target.value);
   }
   const onCreateTask = () => {
 

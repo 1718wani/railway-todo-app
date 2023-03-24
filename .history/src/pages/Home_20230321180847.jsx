@@ -75,18 +75,8 @@ export function Home() {
       });
   };
 
-  const handleKeyDown = (event, listId) => {
-    switch (event.key) {
-      case "Enter":
-        console.log("エンター押されました！");
-        event.preventDefault();
-        handleSelectList(listId);
-        break;
-      default:
-        break;
-    }
-  };
 
+  
   return (
     <div>
       <Header />
@@ -106,18 +96,16 @@ export function Home() {
               </p>
             </div>
           </div>
-          <ul role="tablist" className="list-tab">
+          <ul className="list-tab">
             {lists.map((list, key) => {
               // リストを順番に見ていって、ListIDがセレクトIDになっているところがセレクト箇所
               const isActive = list.id === selectListId;
               return (
                 <li
-                  role="presentation"
                   key={key}
-                  tabIndex={isActive ? "-1" : "0"}
+                  tabIndex="0"
                   className={`list-tab-item ${isActive ? "active" : ""}`}
                   onClick={() => handleSelectList(list.id)}
-                  onKeyDown={(event) => handleKeyDown(event, list.id)}
                 >
                   {list.title}
                 </li>

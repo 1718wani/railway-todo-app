@@ -20,6 +20,7 @@ export function NewTask() {
   const handleSelectList = (id) => setSelectListId(id);
   const handleLimitChange = (e) => {
     setLimit(e.target.value);
+    // setDate(e.target.value);
   }
   const onCreateTask = () => {
 
