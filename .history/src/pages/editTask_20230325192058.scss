@@ -1,0 +1,30 @@
+@charset "utf-8";
+@use "src/style/_variables.scss" as variables;
+@use "src/style/_mixins.scss" as mix ;
+
+.edit-task {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.edit-task-form {
+  color: variables.$inputcolor;
+}
+
+.edit-task-title,
+.edit-task-detail {
+  width: variables.$inputwidth;
+  margin-bottom: 25px;
+}
+
+.delete-task-button {
+  @include mix.negative-button;
+}
+
+.edit-task-button {
+  @include mix.positive-button;
+}
+
+.error-message {
+  color: #ff3333;
+}

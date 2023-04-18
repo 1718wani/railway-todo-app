@@ -1,0 +1,117 @@
+@use "src/style/_variables.scss" as variables;
+@use "src/style/_mixins.scss" as mix ;
+
+.taskList {
+  margin: 50px auto;
+  list-style: none;
+  width: 1000px;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-menu {
+  text-align: right;
+  @include mix.tab{
+    text-align: left;
+  }
+
+  
+}
+
+.list-tab {
+  list-style: none;
+  display: flex;
+  overflow-x: auto;
+  @include mix.{
+    display: flex;
+    overflow-x: scroll;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+.list-tab-item {
+  flex-shrink: 0;
+  width: 100px;
+  padding: 0 25px;
+  text-overflow: normal;
+  margin-right: 5px;
+  border: solid 1px variables.$maincolor;
+  justify-content: center;
+  align-items: center;
+}
+
+.active {
+  background-color: variables.$maincolor;
+  color: variables.$white;
+
+  
+}
+
+.tasks {
+  margin-top: 25px;
+}
+
+.tasks-header {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.task-item {
+  list-style-type: none;
+  height: 120px; /* 高さを増やす */
+  @include mix.sp{
+    height: 100px;
+  }
+  width: calc(100% - 25px);
+  background-color: #f5f5f5;
+  padding-left: 25px;
+  font-size: large;
+  border: solid 1px variables.$white;
+  display: flex; 
+  align-items: center; 
+}
+
+.task-item-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: #000000;
+}
+
+.task-item-deadline {
+  margin-right: 10px; 
+  @include mix.sp{
+    display: none;
+  }
+}
+
+.task-item-time-left {
+  margin-right: 10px; 
+  font-weight: bold;
+  @include mix.sp{
+    display: none;
+  }
+}
+
+.error-message {
+  color: variables.$negativecolor;
+}
+
+.display-select-wrapper {
+  width: 100px;
+  margin: 0 0 25px auto;
+  @include mix.tab{
+    margin: 0 0 25px 10px;
+  }
+  
+}
+
+.display-select {
+  width: 100%;
+}

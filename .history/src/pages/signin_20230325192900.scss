@@ -1,0 +1,33 @@
+@charset "utf-8";
+@use "src/style/_variables.scss" as variables;
+@use "src/style/_mixins.scss" as mix ;
+
+.signin {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.signin-form {
+  margin: 25px 0;
+}
+
+.email-label,
+.password-label {
+  color: #555555;
+}
+
+.email-input,
+.password-input {
+  width: 100%;
+  font-size: large;
+  height: 30px;
+  margin-bottom: 25px;
+}
+
+.signin-button {
+  @include mix.positive-button;
+}
+
+.error-message {
+  color: ;
+}

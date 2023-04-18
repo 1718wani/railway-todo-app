@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+@use "src/style/_variables.scss" as variables;
+@use "src/style/_mixins.scss" as mix ;
+
+.edit-list {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.edit-list-form {
+  color: #555555;
+}
+
+.edit-list-title {
+  width: 300px;
+  margin-bottom: 25px;
+}
+
+.delete-list-button {
+  @include mix.negative-butto
+  color:
+}
+
+.edit-list-button {
+  @include mix.positive-button
+}
+
+.error-message {
+  color: #ff3333;
+}

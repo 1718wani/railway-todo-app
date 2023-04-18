@@ -1,0 +1,41 @@
+@charset "utf-8";
+
+@use "src/style/_variables.scss" as variables;
+@use "src/style/_mixins.scss" as mix;
+
+.edit-list {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.edit-list-form {
+  color: #555555;
+}
+
+.edit-list-title {
+  width: 300px;
+  margin-bottom: 25px;
+}
+
+.delete-list-button {
+  @include nega
+
+  color: #ff3333;
+  border: solid 1px #ff3333;
+  width: 80px;
+  height: 40px;
+  margin: 25px 5px;
+  border-radius: 5px;
+}
+
+.edit-list-button {
+  background-color: #242f9b;
+  color: #ffffff;
+  width: 80px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.error-message {
+  color: #ff3333;
+}

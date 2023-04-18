@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+.signup {
+  width: 500px;
+  margin: 0 auto;
+}
+.signup-form {
+  margin: 25px 0;
+  color: variables.$inputcolor;
+}
+
+.email-input,
+.name-input,
+.password-input {
+  width: 100%;
+  font-size: large;
+  height: 30px;
+  margin-bottom: 25px;
+}
+
+.signup-button {
+  @include mix.positive-button;
+}
+
+.error-message {
+  color: variables.$negativecolor;
+}
